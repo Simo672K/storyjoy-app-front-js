@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Offcanvas from "../Offcanvas/Offcanvas";
 import OffcanvasBody from "../Offcanvas/OffcanvasBody";
 import OffcanvasHeader from "../Offcanvas/OffcanvasHeader";
@@ -6,17 +6,18 @@ import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import NotificationsList from "./NotificationsList";
 import NotificationItem from "./NotificationItem";
 import NoNotifIllustration from "../../assets/No-Notification-illustration.png";
+import { NotifContext } from "./NotificationState";
 
 function Notification() {
-  const [showNotifPanel, setShowNotifPanel] = useState(true);
+  const {show, setShow} = useContext(NotifContext);
   const [markedRead, setMarkedRead] = useState(false);
-
+  
   const handelNotificationClose = () => {
-    setShowNotifPanel(false);
+    setShow(false);
   };
 
   return (
-    <Offcanvas show={showNotifPanel}>
+    <Offcanvas show={show}>
       <OffcanvasHeader onClose={handelNotificationClose}>
         <div className="flex items-baseline justify-between w-full">
           <h3 className="text-xl font-bold">Notifications</h3>

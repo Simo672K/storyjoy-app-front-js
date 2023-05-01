@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import LogoImg from '../../assets/logo.png'
 import AvatarImg from '../../assets/avatar-placeholder.jpg'
 import NavbarCollapse from './NavbarCollapse'
@@ -13,8 +14,11 @@ import UserAvatar from '../Avatar/UserAvatar'
 import SearchBox from '../Search/SearchBox'
 import {MdOutlineModeEditOutline, MdNotifications, MdPerson, MdBookmarkBorder, MdLogout} from "react-icons/md"
 import { IoSettingsOutline, IoMailOutline } from "react-icons/io5" 
+import { NotifContext } from "../Notification/NotificationState";
 
 function Navbar() {
+  const {show, setShow} =useContext(NotifContext);
+
   return (
     <nav className="border-b flex container md:items-center mx-auto py-2">
       <a href="/">
@@ -27,7 +31,11 @@ function Navbar() {
           <NavbarItem linkTo={"#"}>Authors</NavbarItem>
           <NavbarItem linkTo={"#"}>Contact Us</NavbarItem>
           <NavbarItem linkTo={"#"}><MdOutlineModeEditOutline size={24}/></NavbarItem>
-          <NavbarItem linkTo={"#"}><MdNotifications size={28}/></NavbarItem>
+          <li>
+            <button onClick={()=> setShow(true)} className='inline-block font-medium px-4 text-lg py-1 cursor-pointer hover:text-sky-600'>
+              <MdNotifications size={28}/>
+              </button>
+          </li>  
           <li>
             <Dropdown>
               <DropdownTrigger>
