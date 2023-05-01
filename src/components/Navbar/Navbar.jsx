@@ -1,0 +1,58 @@
+import LogoImg from '../../assets/logo.png'
+import AvatarImg from '../../assets/avatar-placeholder.jpg'
+import NavbarCollapse from './NavbarCollapse'
+import NavbarNav from './NavbarNav'
+import NavbarItem from './NavbarItem'
+import Dropdown from '../Dropdown/Dropdown'
+import DropdownTrigger from '../Dropdown/DropdownTrigger'
+import DropdownMenu from '../Dropdown/DropdownMenu'
+import DropdownItem from '../Dropdown/DropdownItem'
+import DropdownDevider from '../Dropdown/DropdownDevider'
+import Avatar from '../Avatar/Avatar'
+import UserAvatar from '../Avatar/UserAvatar'
+import SearchBox from '../Search/SearchBox'
+import {MdOutlineModeEditOutline, MdNotifications, MdPerson, MdBookmarkBorder, MdLogout} from "react-icons/md"
+import { IoSettingsOutline, IoMailOutline } from "react-icons/io5" 
+
+function Navbar() {
+  return (
+    <nav className="border-b flex container md:items-center mx-auto py-2">
+      <a href="/">
+        <img src={LogoImg} alt="App Logo" />
+      </a>
+      <SearchBox />
+      <NavbarCollapse>
+        <NavbarNav>
+          <NavbarItem linkTo={"#"}>Stories</NavbarItem>
+          <NavbarItem linkTo={"#"}>Authors</NavbarItem>
+          <NavbarItem linkTo={"#"}>Contact Us</NavbarItem>
+          <NavbarItem linkTo={"#"}><MdOutlineModeEditOutline size={24}/></NavbarItem>
+          <NavbarItem linkTo={"#"}><MdNotifications size={28}/></NavbarItem>
+          <li>
+            <Dropdown>
+              <DropdownTrigger>
+                <Avatar img={AvatarImg} />
+              </DropdownTrigger>
+              <DropdownMenu right={true}>
+                <li className='mb-2 flex flex-col items-center py-3'>
+                  <UserAvatar img={AvatarImg} />
+                  <h4 className='text-xl font-bold mb-0 leading-4 mt-2 text-center after:w-2 after:h-2 after:bg-green-500 after:rounded-full after:ms-1 after:inline-block'>Sara Doe</h4>
+                  <span className='text-gray-400 text-sm block max-w-[10rem] overflow-hidden whitespace-nowrap text-ellipsis'>example@email.com</span>
+                </li>
+                <DropdownDevider />
+                <DropdownItem><MdPerson className='me-3'/> Profile</DropdownItem>
+                <DropdownItem><IoMailOutline className='me-3'/> Inbox</DropdownItem>
+                <DropdownItem><MdBookmarkBorder className='me-3'/> Bookmarks</DropdownItem>
+                <DropdownItem><IoSettingsOutline className='me-3'/> Settings</DropdownItem>
+                <DropdownDevider />
+                <DropdownItem><MdLogout className='me-3'/> Logout</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </li>
+        </NavbarNav>
+      </NavbarCollapse>
+    </nav>
+  )
+}
+
+export default Navbar
