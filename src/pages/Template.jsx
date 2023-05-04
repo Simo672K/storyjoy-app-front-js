@@ -5,7 +5,7 @@ import {NotifCtxProvider} from '../components/Notification/NotificationState'
 
 
 function Template({children}) {
-  const [showNotifPanel, setShowNotifPanel] = useState(true);
+  const [showNotifPanel, setShowNotifPanel] = useState(false);
   return (
     <>
       <NotifCtxProvider value={{show: showNotifPanel, setShow: setShowNotifPanel}}>
