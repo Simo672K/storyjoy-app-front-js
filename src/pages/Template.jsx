@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar/Navbar'
 import Notification from '../components/Notification/Notification'
 import {NotifCtxProvider} from '../components/Notification/NotificationState'
+import Footer from '../components/Footer/Footer';
 
 
 function Template({children}) {
@@ -14,6 +15,7 @@ function Template({children}) {
             <Notification />
           {children}
         </main>
+        <Footer />
       </NotifCtxProvider>
     </>
   )
