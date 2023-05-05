@@ -8,7 +8,7 @@ import AvatarImg from '../../assets/avatar-placeholder.jpg'
 
 function SearchBoxResultMenue({isShown}) {
   return (
-    <div className={`absolute top-full bg-white rounded-md shadow-lg left-0 w-full ${isShown? '': 'hidden'}`}>
+    <div className={`absolute top-full z-10 bg-white rounded-md shadow-lg left-0 w-full ${isShown? '': 'hidden'}`}>
       <SearchboxResultSection>
         <SearchBoxResultSectionTitle title='Stories'/>
         <SearchBoxResultsList>
