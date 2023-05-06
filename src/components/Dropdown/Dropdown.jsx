@@ -6,11 +6,12 @@ function Dropdown({children}) {
   const [expanded, setExpanded] = useState(false)
   const dropdownRef = useRef();
   useEffect(()=>{
-    const dropdownCloser = document.addEventListener('click', function(e){
+    const dropdownCloser = function(e){
       if (!dropdownRef.current.contains(e.target)){
         setExpanded(false);
       }
-    })
+    } 
+    document.addEventListener('click', dropdownCloser);
 
     // cleanup function
     return () => document.removeEventListener('click', dropdownCloser);
