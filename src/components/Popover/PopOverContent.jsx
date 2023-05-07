@@ -1,16 +1,26 @@
-import React from 'react'
+import { useContext } from "react";
+import { PopoverCtx } from "./PopOverSate";
 
-function PopOverContent({popoverHandler, popoverStyle, popoverAttributes, arrowHandler, arrowStyle, isVisible}) {
-  const updatedArrowStyle = {...arrowStyle, transform: arrowStyle.transform+" rotate(45deg)"};
+function PopOverContent({ children }) {
+  const {
+    setPopperElement, 
+    setArrowElement, 
+    attributes, 
+    styles, 
+    hidden, 
+  } = useContext(PopoverCtx);
+
+  const updatedArrowStyle = {...styles.arrow, transform: styles.arrow.transform+" rotate(45deg)"};
+  
   return (
     <>
       {
-        isVisible?
-        <div className='bg-white p-2 rounded-lg w-64 shadow-md border' ref={popoverHandler} style={popoverStyle} {...popoverAttributes}>
+        hidden?
+        <div className='bg-white p-2 rounded-lg w-64 shadow-xl' ref={setPopperElement} style={{...styles.popper, left:'-0.5px'}} {...attributes.popper}>
           <div className='p-2'>
-            PopOverContent
+            {children}
           </div>
-          <div className='absolute w-4 h-4 border-b border-r bg-white rotate-45' ref={arrowHandler} style={updatedArrowStyle}></div>
+          <div className='absolute w-4 h-4 border-b border-r bg-white rotate-45' ref={setArrowElement} style={updatedArrowStyle}></div>
         </div>
         :null
       }

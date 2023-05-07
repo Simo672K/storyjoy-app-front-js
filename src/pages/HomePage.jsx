@@ -9,7 +9,7 @@ function HomePage() {
       <div className="container mx-auto">
         <BookCard />
 
-        <PopOver />
+        
       </div>
     </>
   )

@@ -1,28 +1,36 @@
 import { useState } from "react"
 import { usePopper } from "react-popper"
-import PopOverTrigger from "./PopOverTrigger";
-import PopOverContent from "./PopOverContent";
+import {PopOverCtxProvider} from "./PopOverSate";
 
-function PopOver() {
-  const [hidden, setHidden] = useState(true);
+function PopOver({placement, children}) {
+  const [hidden, setHidden] = useState(false);
   const [referenceElement, setReferenceElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
   const [arrowElement, setArrowElement] = useState(null);
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     modifiers: [
       { name: 'arrow', options: { element: arrowElement } },
-      { name: 'offset', options: { offset: [0, 8] } }
+      { name: 'offset', options: { offset: [-10, 10] } }
     ],
-    placement:'top-start'
+    placement
   });
+
+  const settings= {
+    hidden,
+    setHidden,
+    setReferenceElement,
+    setPopperElement,
+    arrowElement,
+    setArrowElement,
+    styles,
+    attributes
+  }
 
   
   return (
-    <div>
-      <PopOverTrigger elementHandler={setReferenceElement} visibilityPopoverHandler={setHidden}/>
-      <PopOverContent popoverHandler={setPopperElement} popoverStyle={styles.popper} isVisible={hidden}
-        popoverAttributes={attributes.popper} arrowHandler={setArrowElement} arrowStyle={styles.arrow}/>
-    </div>
+    <PopOverCtxProvider value={settings}>
+      {children}
+    </PopOverCtxProvider>
   )
 }
 
