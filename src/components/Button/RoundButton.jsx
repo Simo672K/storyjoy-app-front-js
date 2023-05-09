@@ -1,7 +1,7 @@
 
-function RoundButton({children}) {
+function RoundButton({children, className}) {
   return (
-    <button className='inline-block rounded-full'>{children}</button>
+    <button className={`inline-block rounded-full ${className??''}`}>{children}</button>
   )
 }
 

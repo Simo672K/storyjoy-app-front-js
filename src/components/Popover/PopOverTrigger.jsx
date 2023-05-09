@@ -2,17 +2,26 @@ import { useContext } from "react";
 import { PopoverCtx } from "./PopOverSate";
 
 function PopOverTrigger({children}) {
-  const {setHidden, setReferenceElement} = useContext(PopoverCtx);
+  const {setHidden, setReferenceElement, effectType} = useContext(PopoverCtx);
 
-
-  const showPopoverHandler= () => {
-    setHidden(true);
+  const clickPopoverHandler= () => {
+    setHidden(prev=> !prev);
   }
-  const hidePopoverHandler= () => {
+  const showPopoverHandler= () => {
     setHidden(false);
   }
+  const hidePopoverHandler= () => {
+    setHidden(true);
+  }
   return (
-    <div className='w-fit cursor-default' ref={setReferenceElement} onMouseEnter={showPopoverHandler} onMouseLeave={hidePopoverHandler}>{children}</div>
+    <>
+      {
+        effectType === 'hover'?
+        <div className='w-fit cursor-pointer' ref={setReferenceElement} onMouseEnter={showPopoverHandler} onMouseLeave={hidePopoverHandler}>{children}</div>
+        :
+        <div className='w-fit cursor-pointer' ref={setReferenceElement} onClick={clickPopoverHandler}>{children}</div>
+      }
+    </>
   )
 }
 

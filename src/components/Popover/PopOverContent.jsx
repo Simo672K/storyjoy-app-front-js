@@ -15,7 +15,7 @@ function PopOverContent({ children }) {
   return (
     <>
       {
-        hidden?
+        !hidden?
         <div className='bg-white p-2 rounded-lg w-64 shadow-xl' ref={setPopperElement} style={{...styles.popper, left:'-0.5px'}} {...attributes.popper}>
           <div className='p-2'>
             {children}

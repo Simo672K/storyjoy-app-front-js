@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { usePopper } from "react-popper"
 import {PopOverCtxProvider} from "./PopOverSate";
 
-function PopOver({placement, children}) {
+function PopOver({placement, children, effectType='hover'}) {
   const [hidden, setHidden] = useState(false);
   const [referenceElement, setReferenceElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
@@ -15,6 +15,19 @@ function PopOver({placement, children}) {
     placement
   });
 
+  const PopElemWrraperRef = useRef();
+
+  useEffect(()=>{
+    const popoverHandler = (e)=>{
+      if(!PopElemWrraperRef.current.contains(e.target) && effectType=== 'click'){
+        setHidden(true);
+      }
+    }
+    document.addEventListener('mousedown', popoverHandler);
+
+    return ()=> document.removeEventListener('mousedown', popoverHandler);
+  }, [])
+
   const settings= {
     hidden,
     setHidden,
@@ -23,13 +36,16 @@ function PopOver({placement, children}) {
     arrowElement,
     setArrowElement,
     styles,
-    attributes
+    attributes,
+    effectType
   }
 
   
   return (
     <PopOverCtxProvider value={settings}>
-      {children}
+      <section className="w-fit" ref={PopElemWrraperRef}>
+        {children}
+      </section>
     </PopOverCtxProvider>
   )
 }
