@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { PopoverCtx } from "./PopOverSate";
 
-function PopOverTrigger({children}) {
+function PopOverTrigger({children, className}) {
   const {setHidden, setReferenceElement, effectType} = useContext(PopoverCtx);
 
   const clickPopoverHandler= () => {
@@ -17,9 +17,9 @@ function PopOverTrigger({children}) {
     <>
       {
         effectType === 'hover'?
-        <div className='w-fit cursor-pointer' ref={setReferenceElement} onMouseEnter={showPopoverHandler} onMouseLeave={hidePopoverHandler}>{children}</div>
+        <div className={`w-fit cursor-pointer ${className??''}`} ref={setReferenceElement} onMouseEnter={showPopoverHandler} onMouseLeave={hidePopoverHandler}>{children}</div>
         :
-        <div className='w-fit cursor-pointer' ref={setReferenceElement} onClick={clickPopoverHandler}>{children}</div>
+        <div className={`w-fit cursor-pointer ${className??''}`} ref={setReferenceElement} onClick={clickPopoverHandler}>{children}</div>
       }
     </>
   )

@@ -3,7 +3,7 @@ import { usePopper } from "react-popper"
 import {PopOverCtxProvider} from "./PopOverSate";
 
 function PopOver({placement, children, effectType='hover'}) {
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(true);
   const [referenceElement, setReferenceElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
   const [arrowElement, setArrowElement] = useState(null);

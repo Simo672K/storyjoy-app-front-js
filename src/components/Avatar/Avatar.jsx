@@ -12,7 +12,7 @@ function Avatar({img, size, name}) {
     <span className={`block rounded-full border-2 border-white overflow-hidden ${size==='sm'? 'w-10 h-10': 'w-14 h-14'}`}>
       {
         img?
-        <img src={img} alt="" />
+        <img src={img} alt="user avatar" />
         :
         <span className={`text-white font-medium text-2xl w-full h-full flex items-center justify-center ${colors[Math.ceil(Math.random()*colors.length-1)]}`}>
           {
