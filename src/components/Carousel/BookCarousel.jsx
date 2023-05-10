@@ -6,32 +6,31 @@ import 'swiper/css/navigation';
 import './BookCarousel.css'
 
 
-function BookCarousel() {
+
+function BookCarousel({prev, next}) {
   return (
     <Swiper 
       modules={[Navigation]}
       spaceBetween={20}
-      navigation
-      slidesPerView={4}
+      navigation= {{
+        prevEl: prev,
+        nextEl: next
+      }}
+      slidesPerView={5}
     >
-      <SwiperSlide>
-        <BookCard />
-      </SwiperSlide>
-      <SwiperSlide>
-        <BookCard />
-      </SwiperSlide>
-      <SwiperSlide>
-        <BookCard />
-      </SwiperSlide>
-      <SwiperSlide>
-        <BookCard />
-      </SwiperSlide>
-      <SwiperSlide>
-        <BookCard />
-      </SwiperSlide>
-      <SwiperSlide>
-        <BookCard />
-      </SwiperSlide>
+      {
+        Array(10).fill(null).map((elem, id)=>{
+          return(
+            <SwiperSlide key={id}>
+              <span className='text-gray-200 text-xl font-bold'>
+                {`${id+1}`.padStart(2, '0')}
+              </span>
+              <BookCard />
+            </SwiperSlide>
+          )
+        })
+      }
+      
     </Swiper>
   )
 }
