@@ -1,6 +1,6 @@
 
 function Section({children, className}) {
-  return <section className={className??''}>{children}</section>;
+  return <section className={"mb-10 "+className??''}>{children}</section>;
 }
 
 export default Section;
