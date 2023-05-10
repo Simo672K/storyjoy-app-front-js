@@ -39,11 +39,11 @@ function Navbar() {
           <NavbarItem linkTo={"#"}>Stories</NavbarItem>
           <NavbarItem linkTo={"#"}>Authors</NavbarItem>
           <NavbarItem linkTo={"#"}>Contact Us</NavbarItem>
-          <NavbarItem linkTo={"#"}>
-            <MdOutlineModeEditOutline size={24} />
-          </NavbarItem>
           {isLoggedIn ? (
             <>
+              <NavbarItem linkTo={"#"}>
+                <MdOutlineModeEditOutline size={24} />
+              </NavbarItem>
               <li>
                 <button
                   onClick={() => setShow(true)}
