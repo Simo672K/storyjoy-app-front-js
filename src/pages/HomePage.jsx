@@ -10,6 +10,7 @@ import Grid from "../components/Grid/Grid";
 import BookCard from "../components/Card/BookCard";
 import { categories } from "../Seed/categories"
 import GenreCarousel from "../components/Carousel/GenreCarousel";
+import BookShowcase from "../components/Showcase/BookShowcase";
 
 function HomePage() {
   return (
@@ -64,6 +65,13 @@ function HomePage() {
               </div>
             </SectionTitle>
             <GenreCarousel categories={categories} settings={{nextEl:"#next2", prevEl:"#prev2"}}/>
+          </SectionContainer>
+        </Section>
+        <Section>
+          <SectionContainer>
+            <div className="grid grid-cols-3">
+              <BookShowcase />
+            </div>
           </SectionContainer>
         </Section>
         <Section className="mb-36">
