@@ -4,4 +4,5 @@
 
 .swiper-slide{
   z-index: 0 !important;
+  width: fit-content;
 }

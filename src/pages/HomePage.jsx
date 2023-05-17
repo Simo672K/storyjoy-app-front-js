@@ -4,13 +4,15 @@ import SectionContainer from "../components/Section/SectionContainer";
 import MainContent from "../components/Main/MainContent";
 import BookCarousel from "../components/Carousel/BookCarousel";
 import SectionTitle from "../components/Section/SectionTitle";
-import { Book, Health, TrendUp } from "iconsax-react";
+import { Book, Health, Notepad2, TrendUp } from "iconsax-react";
 import { RxChevronLeft, RxChevronRight } from "react-icons/rx";
 import Grid from "../components/Grid/Grid";
 import BookCard from "../components/Card/BookCard";
 import { categories } from "../Seed/categories"
 import GenreCarousel from "../components/Carousel/GenreCarousel";
 import BookShowcase from "../components/Showcase/BookShowcase";
+import BookCardSmall from "../components/Card/BookCardSmall";
+import {authors} from "../Seed/authors"
 
 function HomePage() {
   return (
@@ -71,7 +73,44 @@ function HomePage() {
           <SectionContainer>
             <div className="grid grid-cols-3">
               <BookShowcase />
+              <div className="ps-4 flex flex-col">
+                <SectionTitle>
+                  <Notepad2 size="32" color="#005cfb" variant="Bulk"/>
+                  <h3 className="text-xl font-bold ms-3">Story of the weeks</h3>
+                </SectionTitle>
+                <BookCardSmall />
+                <BookCardSmall />
+                <BookCardSmall />
+                <BookCardSmall />
+              </div>
             </div>
+          </SectionContainer>
+        </Section>
+        <Section>
+
+          <SectionContainer>
+            <SectionTitle>
+              <Health size="32" color="#005efa" variant="Bulk" />
+              <h3 className="text-xl font-bold ms-3">
+                Authors
+              </h3>
+
+              <div className="flex items-center ms-auto">
+                <button
+                  className="w-6 h-6 rounded-full flex items-center justify-center text-white bg-[#005efa] me-3"
+                  id="prev3"
+                >
+                  <RxChevronLeft className="p-0" />
+                </button>
+                <button
+                  className="w-6 h-6 rounded-full flex items-center justify-center text-white bg-[#005efa]"
+                  id="next3"
+                >
+                  <RxChevronRight />
+                </button>
+              </div>
+            </SectionTitle>
+            <GenreCarousel categories={authors} settings={{nextEl:"#next3", prevEl:"#prev3"}}/>
           </SectionContainer>
         </Section>
         <Section className="mb-36">

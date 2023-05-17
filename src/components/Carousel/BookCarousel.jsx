@@ -16,7 +16,7 @@ function BookCarousel({prev, next}) {
         prevEl: prev,
         nextEl: next
       }}
-      slidesPerView={5}
+      slidesPerView={'auto'}
     >
       {
         Array(10).fill(null).map((elem, id)=>{
