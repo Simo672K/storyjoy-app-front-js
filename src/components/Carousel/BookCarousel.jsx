@@ -22,10 +22,12 @@ function BookCarousel({prev, next}) {
         Array(10).fill(null).map((elem, id)=>{
           return(
             <SwiperSlide key={id}>
-              <span className='text-gray-200 text-xl font-bold'>
+              <div>
+              <p className='text-gray-200 text-xl font-bold'>
                 {`${id+1}`.padStart(2, '0')}
-              </span>
+              </p>
               <BookCard />
+              </div>
             </SwiperSlide>
           )
         })
